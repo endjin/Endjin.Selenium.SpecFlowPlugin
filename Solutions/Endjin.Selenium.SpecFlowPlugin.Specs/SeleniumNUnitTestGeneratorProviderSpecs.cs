@@ -29,6 +29,7 @@ namespace Endjin.Selenium.SpecFlowPlugin.Specs
     using TechTalk.SpecFlow.Parser;
     using TechTalk.SpecFlow.Parser.SyntaxElements;
     using TechTalk.SpecFlow.Utils;
+    using TechTalk.SpecFlow.Generator.Interfaces;
 
     #endregion
 
@@ -36,7 +37,7 @@ namespace Endjin.Selenium.SpecFlowPlugin.Specs
     public class when_the_selenium_nunit_test_generator_is_asked_to_generate_tests
     {
         private const string SampleFeatureFile = @"
-            @SauceLabConfig
+            @EnableSauceLabs
             Feature: Sample feature file for a custom generator provider
             
             Scenario: Simple scenario
@@ -46,13 +47,16 @@ namespace Endjin.Selenium.SpecFlowPlugin.Specs
 
         Establish context = () =>
         {
+            var projectSettings = new ProjectSettings();
             var parser = new SpecFlowLangParser(new CultureInfo("en-US"));
+
+            projectSettings.ProjectFolder = @"C:\_Projects\_endjin\IP\Endjin.SpecFlow.Selenium\Solutions\Endjin.Selenium.SpecFlowPlugin.Sample";
 
             using (var reader = new StringReader(SampleFeatureFile))
             {
                 Feature feature = parser.Parse(reader, null);
 
-                var seleniumNUnitTestGeneratorProvider = new SeleniumNUnitTestGeneratorProvider(new CodeDomHelper(CodeDomProviderLanguage.CSharp));
+                var seleniumNUnitTestGeneratorProvider = new SeleniumNUnitTestGeneratorProvider(new CodeDomHelper(CodeDomProviderLanguage.CSharp), projectSettings);
 
                 var codeDomHelper = new CodeDomHelper(CodeDomProviderLanguage.CSharp);
 

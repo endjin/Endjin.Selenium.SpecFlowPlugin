@@ -13,6 +13,7 @@
     using TechTalk.SpecFlow.Generator;
     using TechTalk.SpecFlow.Generator.UnitTestProvider;
     using TechTalk.SpecFlow.Utils;
+    using TechTalk.SpecFlow.Generator.Interfaces;
 
     #endregion 
 
@@ -30,16 +31,16 @@
         private const string DescriptionAttr = "NUnit.Framework.DescriptionAttribute";
 
         private readonly CodeDomHelper codeDomHelper;
+        private readonly ProjectSettings projectSettings;
 
         private bool scenarioSetupMethodsAdded;
-
         private bool enableSauceLabs;
-
         private SauceLabsSection sauceLabSettings;
 
-        public SeleniumNUnitTestGeneratorProvider(CodeDomHelper codeDomHelper)
+        public SeleniumNUnitTestGeneratorProvider(CodeDomHelper codeDomHelper, ProjectSettings projectSettings)
         {
             this.codeDomHelper = codeDomHelper;
+            this.projectSettings = projectSettings;
         }
 
         public bool SupportsRowTests
@@ -138,8 +139,8 @@
             
             if (this.enableSauceLabs)
             {
-                var configuration = this.GetConfiguration(generationContext);
-                
+                var configuration = this.GetConfiguration();
+
                 this.sauceLabSettings = configuration.GetSection("sauceLabsSection") as SauceLabsSection;
 
                 if (this.sauceLabSettings == null)
@@ -163,20 +164,27 @@
             }
         }
 
-        private System.Configuration.Configuration GetConfiguration(TestClassGenerationContext generationContext)
+        private System.Configuration.Configuration GetConfiguration()
         {
-            
-            
-            var assembly = Assembly.GetAssembly();
+            var configPath = string.Empty;
+            var configFileTemplate = @"{0}\{1}.config";
 
-            var fullPath = assembly.Location;
+            var appConfig = string.Format(configFileTemplate, this.projectSettings.ProjectFolder, "App");
+            var webConfig = string.Format(configFileTemplate, this.projectSettings.ProjectFolder, "Web");
 
-            string directory = Path.GetDirectoryName(fullPath);
+            if (File.Exists(appConfig))
+            {
+                configPath = appConfig;
+            }
+            else if (File.Exists(webConfig))
+            {
+                configPath = webConfig;
+            }
 
             var exeConfig = new ExeConfigurationFileMap
-                {
-                    ExeConfigFilename = Path.Combine(directory, string.Format("{0}.config", assembly.FullName))
-                };
+            {
+                ExeConfigFilename = configPath
+            };
 
             return ConfigurationManager.OpenMappedExeConfiguration(exeConfig, ConfigurationUserLevel.None);
         }
