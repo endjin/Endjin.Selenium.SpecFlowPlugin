@@ -36,6 +36,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.XML" />
     <Reference Include="TechTalk.SpecFlow">
       <HintPath>..\..\Packages\SpecFlow.1.9.0\lib\net35\TechTalk.SpecFlow.dll</HintPath>
@@ -49,6 +50,9 @@
     <Reference Include="TechTalk.SpecFlow.Utils">
       <HintPath>..\..\Packages\SpecFlow.CustomPlugin.1.9.0\lib\net40\TechTalk.SpecFlow.Utils.dll</HintPath>
     </Reference>
+    <Reference Include="WebDriver">
+      <HintPath>..\..\Packages\Selenium.WebDriver.2.32.1\lib\net40\WebDriver.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration\SauceLabsSectionDesigner.csd.cs">
@@ -56,7 +60,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SauceLabsSectionDesigner.csd</DependentUpon>
     </Compile>
+    <Compile Include="GeneratorPlugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RemoteWebDriver.cs" />
+    <Compile Include="RuntimePlugin.cs" />
+    <Compile Include="SeleniumNUnitTestGeneratorProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
