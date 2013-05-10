@@ -1,10 +1,9 @@
-﻿namespace Endjin.SpecFlow.Selenium.Specs
+﻿namespace Endjin.Selenium.SpecFlowPlugin.Specs
 {
     #region Using Directives
 
     using System.CodeDom;
     using System.Collections.Generic;
-
     using TechTalk.SpecFlow.Generator;
     using TechTalk.SpecFlow.Generator.UnitTestConverter;
     using TechTalk.SpecFlow.Parser.SyntaxElements;

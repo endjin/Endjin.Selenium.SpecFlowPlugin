@@ -1,6 +1,8 @@
-﻿[assembly: TechTalk.SpecFlow.Infrastructure.GeneratorPlugin(typeof(Endjin.SpecFlow.Selenium.GeneratorPlugin))]
+﻿using Endjin.Selenium.SpecFlowPlugin;
 
-namespace Endjin.SpecFlow.Selenium
+[assembly: TechTalk.SpecFlow.Infrastructure.GeneratorPlugin(typeof(GeneratorPlugin))]
+
+namespace Endjin.Selenium.SpecFlowPlugin
 {
     using TechTalk.SpecFlow.Generator.Interfaces;
     using TechTalk.SpecFlow.Generator.Plugins;

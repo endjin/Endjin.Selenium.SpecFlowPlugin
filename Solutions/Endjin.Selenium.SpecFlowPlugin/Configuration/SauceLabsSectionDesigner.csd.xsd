@@ -7,9 +7,9 @@
     the code is regenerated.
 </auto-generated>
 -->
-<xs:schema xmlns:tns="urn:Endjin.SpecFlow.Selenium.Configuration" elementFormDefault="qualified" targetNamespace="urn:Endjin.SpecFlow.Selenium.Configuration" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-	<xs:element name="sauceLabsSection" type="tns:Endjin.SpecFlow.Selenium.Configuration.SauceLabsSectionCT" />
-	<xs:complexType name="Endjin.SpecFlow.Selenium.Configuration.CredentialsElementCT">
+<xs:schema xmlns:tns="urn:Endjin.Selenium.SpecFlowPlugin.Configuration" elementFormDefault="qualified" targetNamespace="urn:Endjin.Selenium.SpecFlowPlugin.Configuration" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="sauceLabsSection" type="tns:Endjin.Selenium.SpecFlowPlugin.Configuration.SauceLabsSectionCT" />
+	<xs:complexType name="Endjin.Selenium.SpecFlowPlugin.Configuration.CredentialsElementCT">
 		<xs:attribute name="accessKey" use="optional" type="xs:string">
 			<xs:annotation>
 				<xs:documentation>The AccessKey.</xs:documentation>
@@ -26,30 +26,30 @@
 			</xs:annotation>
 		</xs:attribute>
 	</xs:complexType>
-	<xs:complexType name="Endjin.SpecFlow.Selenium.Configuration.SauceLabsSectionCT">
+	<xs:complexType name="Endjin.Selenium.SpecFlowPlugin.Configuration.SauceLabsSectionCT">
 		<xs:choice minOccurs="0" maxOccurs="unbounded">
-			<xs:element minOccurs="0" name="credentials" type="tns:Endjin.SpecFlow.Selenium.Configuration.CredentialsElementCT">
+			<xs:element minOccurs="0" name="credentials" type="tns:Endjin.Selenium.SpecFlowPlugin.Configuration.CredentialsElementCT">
 				<xs:annotation>
 					<xs:documentation>The Credentials.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element minOccurs="0" name="capabilities" type="tns:Endjin.SpecFlow.Selenium.Configuration.CapabilityCT">
+			<xs:element minOccurs="0" name="capabilities" type="tns:Endjin.Selenium.SpecFlowPlugin.Configuration.CapabilityCT">
 				<xs:annotation>
 					<xs:documentation>The Capabilities.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:choice>
 	</xs:complexType>
-	<xs:complexType name="Endjin.SpecFlow.Selenium.Configuration.CapabilityCT">
+	<xs:complexType name="Endjin.Selenium.SpecFlowPlugin.Configuration.CapabilityCT">
 		<xs:choice minOccurs="0" maxOccurs="unbounded">
-			<xs:element minOccurs="0" maxOccurs="unbounded" name="capability" type="tns:Endjin.SpecFlow.Selenium.Configuration.CapabilityElementCT">
+			<xs:element minOccurs="0" maxOccurs="unbounded" name="capability" type="tns:Endjin.Selenium.SpecFlowPlugin.Configuration.CapabilityElementCT">
 				<xs:annotation>
 					<xs:documentation>The CapabilityElement Configuration Element.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:choice>
 	</xs:complexType>
-	<xs:complexType name="Endjin.SpecFlow.Selenium.Configuration.CapabilityElementCT">
+	<xs:complexType name="Endjin.Selenium.SpecFlowPlugin.Configuration.CapabilityElementCT">
 		<xs:attribute name="key" use="required" type="xs:string">
 			<xs:annotation>
 				<xs:documentation>The Key.</xs:documentation>

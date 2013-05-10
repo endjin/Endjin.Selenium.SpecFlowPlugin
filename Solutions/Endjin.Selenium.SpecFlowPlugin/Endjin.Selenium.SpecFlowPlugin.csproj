@@ -7,8 +7,8 @@
     <ProjectGuid>{E192A032-4B76-435D-B4C2-371ED0E9E518}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Endjin.SpecFlow.Selenium</RootNamespace>
-    <AssemblyName>Endjin.SpecFlow.Selenium</AssemblyName>
+    <RootNamespace>Endjin.Selenium.SpecFlowPlugin</RootNamespace>
+    <AssemblyName>Endjin.Selenium.SpecFlowPlugin</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
@@ -18,7 +18,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>bin\Debug\tools\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>

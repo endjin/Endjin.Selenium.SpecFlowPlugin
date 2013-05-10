@@ -1,8 +1,7 @@
-﻿namespace Endjin.SpecFlow.Selenium
+﻿namespace Endjin.Selenium.SpecFlowPlugin
 {
     using System;
     using System.Configuration;
-
     using OpenQA.Selenium;
     using OpenQA.Selenium.Remote;
 

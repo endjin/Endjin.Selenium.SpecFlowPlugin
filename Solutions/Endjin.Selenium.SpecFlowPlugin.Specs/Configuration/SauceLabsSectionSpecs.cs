@@ -15,15 +15,12 @@
 
 #endregion
 
-namespace Endjin.SpecFlow.Selenium.Specs.Configuration
+namespace Endjin.Selenium.SpecFlowPlugin.Specs.Configuration
 {
     #region Using Directives
 
-    using System;
     using System.Configuration;
-
-    using Endjin.SpecFlow.Selenium.Configuration;
-
+    using Endjin.Selenium.SpecFlowPlugin.Configuration;
     using Machine.Specifications;
 
     #endregion

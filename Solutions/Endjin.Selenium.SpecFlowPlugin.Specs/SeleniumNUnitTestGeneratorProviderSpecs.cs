@@ -15,18 +15,15 @@
 
 #endregion
 
-namespace Endjin.SpecFlow.Selenium.Specs
+namespace Endjin.Selenium.SpecFlowPlugin.Specs
 {
     #region Using Directives
 
-    using System;
     using System.CodeDom;
-    using System.Collections.Generic;
     using System.Globalization;
     using System.IO;
-
+    using Endjin.Selenium.SpecFlowPlugin;
     using Machine.Specifications;
-
     using TechTalk.SpecFlow.Generator;
     using TechTalk.SpecFlow.Generator.Configuration;
     using TechTalk.SpecFlow.Parser;
@@ -39,27 +36,13 @@ namespace Endjin.SpecFlow.Selenium.Specs
     public class when_the_selenium_nunit_test_generator_is_asked_to_generate_tests
     {
         private const string SampleFeatureFile = @"
+            @SauceLabConfig
             Feature: Sample feature file for a custom generator provider
             
             Scenario: Simple scenario
 				Given there is something
 				When I do something
-				Then something should happen
-
-            @mytag
-			Scenario Outline: Simple Scenario Outline
-				Given there is something
-                    """"""
-                      long string
-                    """"""
-				When I do <what>
-                    | foo | bar |
-                    | 1   | 2   |
-				Then something should happen
-			Examples: 
-				| what           |
-				| something      |
-				| somethign else |";
+				Then something should happen";
 
         Establish context = () =>
         {

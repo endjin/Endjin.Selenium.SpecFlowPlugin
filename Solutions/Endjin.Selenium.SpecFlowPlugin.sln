@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Endjin.SpecFlow.Selenium", "Endjin.SpecFlow.Selenium\Endjin.SpecFlow.Selenium.csproj", "{E192A032-4B76-435D-B4C2-371ED0E9E518}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Endjin.Selenium.SpecFlowPlugin", "Endjin.Selenium.SpecFlowPlugin\Endjin.Selenium.SpecFlowPlugin.csproj", "{E192A032-4B76-435D-B4C2-371ED0E9E518}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{2D609224-DCF9-47C1-8F01-700C9DD82C83}"
 	ProjectSection(SolutionItems) = preProject
@@ -10,7 +10,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{2D6092
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Endjin.SpecFlow.Selenium.Specs", "Endjin.SpecFlow.Selenium.Specs\Endjin.SpecFlow.Selenium.Specs.csproj", "{1B9C110B-1318-43E1-B705-585870C70CDA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Endjin.Selenium.SpecFlowPlugin.Specs", "Endjin.Selenium.SpecFlowPlugin.Specs\Endjin.Selenium.SpecFlowPlugin.Specs.csproj", "{1B9C110B-1318-43E1-B705-585870C70CDA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Endjin.Selenium.SpecFlowPlugin.Sample", "Endjin.Selenium.SpecFlowPlugin.Sample\Endjin.Selenium.SpecFlowPlugin.Sample.csproj", "{A116662E-3C5D-47D3-86CE-7A44DC3837AA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,6 +28,10 @@ Global
 		{1B9C110B-1318-43E1-B705-585870C70CDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B9C110B-1318-43E1-B705-585870C70CDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B9C110B-1318-43E1-B705-585870C70CDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A116662E-3C5D-47D3-86CE-7A44DC3837AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A116662E-3C5D-47D3-86CE-7A44DC3837AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A116662E-3C5D-47D3-86CE-7A44DC3837AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A116662E-3C5D-47D3-86CE-7A44DC3837AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

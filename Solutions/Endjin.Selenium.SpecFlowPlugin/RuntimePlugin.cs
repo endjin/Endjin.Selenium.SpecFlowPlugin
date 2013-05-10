@@ -1,6 +1,8 @@
-﻿[assembly: TechTalk.SpecFlow.Infrastructure.RuntimePlugin(typeof(Endjin.SpecFlow.Selenium.RuntimePlugin))]
+﻿using Endjin.Selenium.SpecFlowPlugin;
 
-namespace Endjin.SpecFlow.Selenium
+[assembly: TechTalk.SpecFlow.Infrastructure.RuntimePlugin(typeof(RuntimePlugin))]
+
+namespace Endjin.Selenium.SpecFlowPlugin
 {
     using TechTalk.SpecFlow.Infrastructure;
     using TechTalk.SpecFlow.UnitTestProvider;

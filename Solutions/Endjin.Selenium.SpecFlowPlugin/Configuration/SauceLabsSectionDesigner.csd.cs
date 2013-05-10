@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Endjin.SpecFlow.Selenium.Configuration
+namespace Endjin.Selenium.SpecFlowPlugin.Configuration
 {
     
     
@@ -41,16 +41,16 @@ namespace Endjin.SpecFlow.Selenium.Configuration
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
         [global::System.ComponentModel.DescriptionAttribute("The AccessKey.")]
-        [global::System.Configuration.ConfigurationPropertyAttribute(global::Endjin.SpecFlow.Selenium.Configuration.CredentialsElement.AccessKeyPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::Endjin.Selenium.SpecFlowPlugin.Configuration.CredentialsElement.AccessKeyPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
         public virtual string AccessKey
         {
             get
             {
-                return ((string)(base[global::Endjin.SpecFlow.Selenium.Configuration.CredentialsElement.AccessKeyPropertyName]));
+                return ((string)(base[global::Endjin.Selenium.SpecFlowPlugin.Configuration.CredentialsElement.AccessKeyPropertyName]));
             }
             set
             {
-                base[global::Endjin.SpecFlow.Selenium.Configuration.CredentialsElement.AccessKeyPropertyName] = value;
+                base[global::Endjin.Selenium.SpecFlowPlugin.Configuration.CredentialsElement.AccessKeyPropertyName] = value;
             }
         }
         #endregion
@@ -67,16 +67,16 @@ namespace Endjin.SpecFlow.Selenium.Configuration
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
         [global::System.ComponentModel.DescriptionAttribute("The UserName.")]
-        [global::System.Configuration.ConfigurationPropertyAttribute(global::Endjin.SpecFlow.Selenium.Configuration.CredentialsElement.UserNamePropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::Endjin.Selenium.SpecFlowPlugin.Configuration.CredentialsElement.UserNamePropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
         public virtual string UserName
         {
             get
             {
-                return ((string)(base[global::Endjin.SpecFlow.Selenium.Configuration.CredentialsElement.UserNamePropertyName]));
+                return ((string)(base[global::Endjin.Selenium.SpecFlowPlugin.Configuration.CredentialsElement.UserNamePropertyName]));
             }
             set
             {
-                base[global::Endjin.SpecFlow.Selenium.Configuration.CredentialsElement.UserNamePropertyName] = value;
+                base[global::Endjin.Selenium.SpecFlowPlugin.Configuration.CredentialsElement.UserNamePropertyName] = value;
             }
         }
         #endregion
@@ -93,22 +93,22 @@ namespace Endjin.SpecFlow.Selenium.Configuration
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
         [global::System.ComponentModel.DescriptionAttribute("The Url.")]
-        [global::System.Configuration.ConfigurationPropertyAttribute(global::Endjin.SpecFlow.Selenium.Configuration.CredentialsElement.UrlPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::Endjin.Selenium.SpecFlowPlugin.Configuration.CredentialsElement.UrlPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
         public virtual string Url
         {
             get
             {
-                return ((string)(base[global::Endjin.SpecFlow.Selenium.Configuration.CredentialsElement.UrlPropertyName]));
+                return ((string)(base[global::Endjin.Selenium.SpecFlowPlugin.Configuration.CredentialsElement.UrlPropertyName]));
             }
             set
             {
-                base[global::Endjin.SpecFlow.Selenium.Configuration.CredentialsElement.UrlPropertyName] = value;
+                base[global::Endjin.Selenium.SpecFlowPlugin.Configuration.CredentialsElement.UrlPropertyName] = value;
             }
         }
         #endregion
     }
 }
-namespace Endjin.SpecFlow.Selenium.Configuration
+namespace Endjin.Selenium.SpecFlowPlugin.Configuration
 {
     
     
@@ -129,11 +129,11 @@ namespace Endjin.SpecFlow.Selenium.Configuration
         /// Gets the SauceLabsSection instance.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
-        public static global::Endjin.SpecFlow.Selenium.Configuration.SauceLabsSection Instance
+        public static global::Endjin.Selenium.SpecFlowPlugin.Configuration.SauceLabsSection Instance
         {
             get
             {
-                return ((global::Endjin.SpecFlow.Selenium.Configuration.SauceLabsSection)(global::System.Configuration.ConfigurationManager.GetSection(global::Endjin.SpecFlow.Selenium.Configuration.SauceLabsSection.SauceLabsSectionSectionName)));
+                return ((global::Endjin.Selenium.SpecFlowPlugin.Configuration.SauceLabsSection)(global::System.Configuration.ConfigurationManager.GetSection(global::Endjin.Selenium.SpecFlowPlugin.Configuration.SauceLabsSection.SauceLabsSectionSectionName)));
             }
         }
         #endregion
@@ -153,12 +153,12 @@ namespace Endjin.SpecFlow.Selenium.Configuration
         /// the parser doesn't throw an exception because it encounters the unknown "xmlns" attribute.
         /// </remarks>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
-        [global::System.Configuration.ConfigurationPropertyAttribute(global::Endjin.SpecFlow.Selenium.Configuration.SauceLabsSection.XmlnsPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::Endjin.Selenium.SpecFlowPlugin.Configuration.SauceLabsSection.XmlnsPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
         public string Xmlns
         {
             get
             {
-                return ((string)(base[global::Endjin.SpecFlow.Selenium.Configuration.SauceLabsSection.XmlnsPropertyName]));
+                return ((string)(base[global::Endjin.Selenium.SpecFlowPlugin.Configuration.SauceLabsSection.XmlnsPropertyName]));
             }
         }
         #endregion
@@ -186,16 +186,16 @@ namespace Endjin.SpecFlow.Selenium.Configuration
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
         [global::System.ComponentModel.DescriptionAttribute("The Credentials.")]
-        [global::System.Configuration.ConfigurationPropertyAttribute(global::Endjin.SpecFlow.Selenium.Configuration.SauceLabsSection.CredentialsPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
-        public virtual global::Endjin.SpecFlow.Selenium.Configuration.CredentialsElement Credentials
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::Endjin.Selenium.SpecFlowPlugin.Configuration.SauceLabsSection.CredentialsPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
+        public virtual global::Endjin.Selenium.SpecFlowPlugin.Configuration.CredentialsElement Credentials
         {
             get
             {
-                return ((global::Endjin.SpecFlow.Selenium.Configuration.CredentialsElement)(base[global::Endjin.SpecFlow.Selenium.Configuration.SauceLabsSection.CredentialsPropertyName]));
+                return ((global::Endjin.Selenium.SpecFlowPlugin.Configuration.CredentialsElement)(base[global::Endjin.Selenium.SpecFlowPlugin.Configuration.SauceLabsSection.CredentialsPropertyName]));
             }
             set
             {
-                base[global::Endjin.SpecFlow.Selenium.Configuration.SauceLabsSection.CredentialsPropertyName] = value;
+                base[global::Endjin.Selenium.SpecFlowPlugin.Configuration.SauceLabsSection.CredentialsPropertyName] = value;
             }
         }
         #endregion
@@ -212,35 +212,35 @@ namespace Endjin.SpecFlow.Selenium.Configuration
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
         [global::System.ComponentModel.DescriptionAttribute("The Capabilities.")]
-        [global::System.Configuration.ConfigurationPropertyAttribute(global::Endjin.SpecFlow.Selenium.Configuration.SauceLabsSection.CapabilitiesPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
-        public virtual global::Endjin.SpecFlow.Selenium.Configuration.Capability Capabilities
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::Endjin.Selenium.SpecFlowPlugin.Configuration.SauceLabsSection.CapabilitiesPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
+        public virtual global::Endjin.Selenium.SpecFlowPlugin.Configuration.Capability Capabilities
         {
             get
             {
-                return ((global::Endjin.SpecFlow.Selenium.Configuration.Capability)(base[global::Endjin.SpecFlow.Selenium.Configuration.SauceLabsSection.CapabilitiesPropertyName]));
+                return ((global::Endjin.Selenium.SpecFlowPlugin.Configuration.Capability)(base[global::Endjin.Selenium.SpecFlowPlugin.Configuration.SauceLabsSection.CapabilitiesPropertyName]));
             }
             set
             {
-                base[global::Endjin.SpecFlow.Selenium.Configuration.SauceLabsSection.CapabilitiesPropertyName] = value;
+                base[global::Endjin.Selenium.SpecFlowPlugin.Configuration.SauceLabsSection.CapabilitiesPropertyName] = value;
             }
         }
         #endregion
     }
 }
-namespace Endjin.SpecFlow.Selenium.Configuration
+namespace Endjin.Selenium.SpecFlowPlugin.Configuration
 {
     
     
     /// <summary>
     /// A collection of CapabilityElement instances.
     /// </summary>
-    [global::System.Configuration.ConfigurationCollectionAttribute(typeof(global::Endjin.SpecFlow.Selenium.Configuration.CapabilityElement), CollectionType=global::System.Configuration.ConfigurationElementCollectionType.BasicMapAlternate, AddItemName=global::Endjin.SpecFlow.Selenium.Configuration.Capability.CapabilityElementPropertyName)]
+    [global::System.Configuration.ConfigurationCollectionAttribute(typeof(global::Endjin.Selenium.SpecFlowPlugin.Configuration.CapabilityElement), CollectionType=global::System.Configuration.ConfigurationElementCollectionType.BasicMapAlternate, AddItemName=global::Endjin.Selenium.SpecFlowPlugin.Configuration.Capability.CapabilityElementPropertyName)]
     public partial class Capability : global::System.Configuration.ConfigurationElementCollection
     {
         
         #region Constants
         /// <summary>
-        /// The XML name of the individual <see cref="global::Endjin.SpecFlow.Selenium.Configuration.CapabilityElement"/> instances in this collection.
+        /// The XML name of the individual <see cref="global::Endjin.Selenium.SpecFlowPlugin.Configuration.CapabilityElement"/> instances in this collection.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
         internal const string CapabilityElementPropertyName = "capability";
@@ -268,7 +268,7 @@ namespace Endjin.SpecFlow.Selenium.Configuration
         {
             get
             {
-                return global::Endjin.SpecFlow.Selenium.Configuration.Capability.CapabilityElementPropertyName;
+                return global::Endjin.Selenium.SpecFlowPlugin.Configuration.Capability.CapabilityElementPropertyName;
             }
         }
         
@@ -282,7 +282,7 @@ namespace Endjin.SpecFlow.Selenium.Configuration
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
         protected override bool IsElementName(string elementName)
         {
-            return (elementName == global::Endjin.SpecFlow.Selenium.Configuration.Capability.CapabilityElementPropertyName);
+            return (elementName == global::Endjin.Selenium.SpecFlowPlugin.Configuration.Capability.CapabilityElementPropertyName);
         }
         
         /// <summary>
@@ -295,57 +295,57 @@ namespace Endjin.SpecFlow.Selenium.Configuration
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
         protected override object GetElementKey(global::System.Configuration.ConfigurationElement element)
         {
-            return ((global::Endjin.SpecFlow.Selenium.Configuration.CapabilityElement)(element)).Key;
+            return ((global::Endjin.Selenium.SpecFlowPlugin.Configuration.CapabilityElement)(element)).Key;
         }
         
         /// <summary>
-        /// Creates a new <see cref="global::Endjin.SpecFlow.Selenium.Configuration.CapabilityElement"/>.
+        /// Creates a new <see cref="global::Endjin.Selenium.SpecFlowPlugin.Configuration.CapabilityElement"/>.
         /// </summary>
         /// <returns>
-        /// A new <see cref="global::Endjin.SpecFlow.Selenium.Configuration.CapabilityElement"/>.
+        /// A new <see cref="global::Endjin.Selenium.SpecFlowPlugin.Configuration.CapabilityElement"/>.
         /// </returns>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
         protected override global::System.Configuration.ConfigurationElement CreateNewElement()
         {
-            return new global::Endjin.SpecFlow.Selenium.Configuration.CapabilityElement();
+            return new global::Endjin.Selenium.SpecFlowPlugin.Configuration.CapabilityElement();
         }
         #endregion
         
         #region Indexer
         /// <summary>
-        /// Gets the <see cref="global::Endjin.SpecFlow.Selenium.Configuration.CapabilityElement"/> at the specified index.
+        /// Gets the <see cref="global::Endjin.Selenium.SpecFlowPlugin.Configuration.CapabilityElement"/> at the specified index.
         /// </summary>
-        /// <param name="index">The index of the <see cref="global::Endjin.SpecFlow.Selenium.Configuration.CapabilityElement"/> to retrieve.</param>
+        /// <param name="index">The index of the <see cref="global::Endjin.Selenium.SpecFlowPlugin.Configuration.CapabilityElement"/> to retrieve.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
-        public global::Endjin.SpecFlow.Selenium.Configuration.CapabilityElement this[int index]
+        public global::Endjin.Selenium.SpecFlowPlugin.Configuration.CapabilityElement this[int index]
         {
             get
             {
-                return ((global::Endjin.SpecFlow.Selenium.Configuration.CapabilityElement)(base.BaseGet(index)));
+                return ((global::Endjin.Selenium.SpecFlowPlugin.Configuration.CapabilityElement)(base.BaseGet(index)));
             }
         }
         
         /// <summary>
-        /// Gets the <see cref="global::Endjin.SpecFlow.Selenium.Configuration.CapabilityElement"/> with the specified key.
+        /// Gets the <see cref="global::Endjin.Selenium.SpecFlowPlugin.Configuration.CapabilityElement"/> with the specified key.
         /// </summary>
-        /// <param name="key">The key of the <see cref="global::Endjin.SpecFlow.Selenium.Configuration.CapabilityElement"/> to retrieve.</param>
+        /// <param name="key">The key of the <see cref="global::Endjin.Selenium.SpecFlowPlugin.Configuration.CapabilityElement"/> to retrieve.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
-        public global::Endjin.SpecFlow.Selenium.Configuration.CapabilityElement this[object key]
+        public global::Endjin.Selenium.SpecFlowPlugin.Configuration.CapabilityElement this[object key]
         {
             get
             {
-                return ((global::Endjin.SpecFlow.Selenium.Configuration.CapabilityElement)(base.BaseGet(key)));
+                return ((global::Endjin.Selenium.SpecFlowPlugin.Configuration.CapabilityElement)(base.BaseGet(key)));
             }
         }
         #endregion
         
         #region Add
         /// <summary>
-        /// Adds the specified <see cref="global::Endjin.SpecFlow.Selenium.Configuration.CapabilityElement"/> to the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
+        /// Adds the specified <see cref="global::Endjin.Selenium.SpecFlowPlugin.Configuration.CapabilityElement"/> to the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
         /// </summary>
-        /// <param name="capability">The <see cref="global::Endjin.SpecFlow.Selenium.Configuration.CapabilityElement"/> to add.</param>
+        /// <param name="capability">The <see cref="global::Endjin.Selenium.SpecFlowPlugin.Configuration.CapabilityElement"/> to add.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
-        public void Add(global::Endjin.SpecFlow.Selenium.Configuration.CapabilityElement capability)
+        public void Add(global::Endjin.Selenium.SpecFlowPlugin.Configuration.CapabilityElement capability)
         {
             base.BaseAdd(capability);
         }
@@ -353,11 +353,11 @@ namespace Endjin.SpecFlow.Selenium.Configuration
         
         #region Remove
         /// <summary>
-        /// Removes the specified <see cref="global::Endjin.SpecFlow.Selenium.Configuration.CapabilityElement"/> from the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
+        /// Removes the specified <see cref="global::Endjin.Selenium.SpecFlowPlugin.Configuration.CapabilityElement"/> from the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
         /// </summary>
-        /// <param name="capability">The <see cref="global::Endjin.SpecFlow.Selenium.Configuration.CapabilityElement"/> to remove.</param>
+        /// <param name="capability">The <see cref="global::Endjin.Selenium.SpecFlowPlugin.Configuration.CapabilityElement"/> to remove.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
-        public void Remove(global::Endjin.SpecFlow.Selenium.Configuration.CapabilityElement capability)
+        public void Remove(global::Endjin.Selenium.SpecFlowPlugin.Configuration.CapabilityElement capability)
         {
             base.BaseRemove(this.GetElementKey(capability));
         }
@@ -365,23 +365,23 @@ namespace Endjin.SpecFlow.Selenium.Configuration
         
         #region GetItem
         /// <summary>
-        /// Gets the <see cref="global::Endjin.SpecFlow.Selenium.Configuration.CapabilityElement"/> at the specified index.
+        /// Gets the <see cref="global::Endjin.Selenium.SpecFlowPlugin.Configuration.CapabilityElement"/> at the specified index.
         /// </summary>
-        /// <param name="index">The index of the <see cref="global::Endjin.SpecFlow.Selenium.Configuration.CapabilityElement"/> to retrieve.</param>
+        /// <param name="index">The index of the <see cref="global::Endjin.Selenium.SpecFlowPlugin.Configuration.CapabilityElement"/> to retrieve.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
-        public global::Endjin.SpecFlow.Selenium.Configuration.CapabilityElement GetItemAt(int index)
+        public global::Endjin.Selenium.SpecFlowPlugin.Configuration.CapabilityElement GetItemAt(int index)
         {
-            return ((global::Endjin.SpecFlow.Selenium.Configuration.CapabilityElement)(base.BaseGet(index)));
+            return ((global::Endjin.Selenium.SpecFlowPlugin.Configuration.CapabilityElement)(base.BaseGet(index)));
         }
         
         /// <summary>
-        /// Gets the <see cref="global::Endjin.SpecFlow.Selenium.Configuration.CapabilityElement"/> with the specified key.
+        /// Gets the <see cref="global::Endjin.Selenium.SpecFlowPlugin.Configuration.CapabilityElement"/> with the specified key.
         /// </summary>
-        /// <param name="key">The key of the <see cref="global::Endjin.SpecFlow.Selenium.Configuration.CapabilityElement"/> to retrieve.</param>
+        /// <param name="key">The key of the <see cref="global::Endjin.Selenium.SpecFlowPlugin.Configuration.CapabilityElement"/> to retrieve.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
-        public global::Endjin.SpecFlow.Selenium.Configuration.CapabilityElement GetItemByKey(string key)
+        public global::Endjin.Selenium.SpecFlowPlugin.Configuration.CapabilityElement GetItemByKey(string key)
         {
-            return ((global::Endjin.SpecFlow.Selenium.Configuration.CapabilityElement)(base.BaseGet(((object)(key)))));
+            return ((global::Endjin.Selenium.SpecFlowPlugin.Configuration.CapabilityElement)(base.BaseGet(((object)(key)))));
         }
         #endregion
         
@@ -397,7 +397,7 @@ namespace Endjin.SpecFlow.Selenium.Configuration
         #endregion
     }
 }
-namespace Endjin.SpecFlow.Selenium.Configuration
+namespace Endjin.Selenium.SpecFlowPlugin.Configuration
 {
     
     
@@ -430,16 +430,16 @@ namespace Endjin.SpecFlow.Selenium.Configuration
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
         [global::System.ComponentModel.DescriptionAttribute("The Key.")]
-        [global::System.Configuration.ConfigurationPropertyAttribute(global::Endjin.SpecFlow.Selenium.Configuration.CapabilityElement.KeyPropertyName, IsRequired=true, IsKey=true, IsDefaultCollection=false)]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::Endjin.Selenium.SpecFlowPlugin.Configuration.CapabilityElement.KeyPropertyName, IsRequired=true, IsKey=true, IsDefaultCollection=false)]
         public virtual string Key
         {
             get
             {
-                return ((string)(base[global::Endjin.SpecFlow.Selenium.Configuration.CapabilityElement.KeyPropertyName]));
+                return ((string)(base[global::Endjin.Selenium.SpecFlowPlugin.Configuration.CapabilityElement.KeyPropertyName]));
             }
             set
             {
-                base[global::Endjin.SpecFlow.Selenium.Configuration.CapabilityElement.KeyPropertyName] = value;
+                base[global::Endjin.Selenium.SpecFlowPlugin.Configuration.CapabilityElement.KeyPropertyName] = value;
             }
         }
         #endregion
@@ -456,16 +456,16 @@ namespace Endjin.SpecFlow.Selenium.Configuration
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
         [global::System.ComponentModel.DescriptionAttribute("The Browser.")]
-        [global::System.Configuration.ConfigurationPropertyAttribute(global::Endjin.SpecFlow.Selenium.Configuration.CapabilityElement.BrowserPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::Endjin.Selenium.SpecFlowPlugin.Configuration.CapabilityElement.BrowserPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
         public virtual string Browser
         {
             get
             {
-                return ((string)(base[global::Endjin.SpecFlow.Selenium.Configuration.CapabilityElement.BrowserPropertyName]));
+                return ((string)(base[global::Endjin.Selenium.SpecFlowPlugin.Configuration.CapabilityElement.BrowserPropertyName]));
             }
             set
             {
-                base[global::Endjin.SpecFlow.Selenium.Configuration.CapabilityElement.BrowserPropertyName] = value;
+                base[global::Endjin.Selenium.SpecFlowPlugin.Configuration.CapabilityElement.BrowserPropertyName] = value;
             }
         }
         #endregion
@@ -482,16 +482,16 @@ namespace Endjin.SpecFlow.Selenium.Configuration
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
         [global::System.ComponentModel.DescriptionAttribute("The BrowserVersion.")]
-        [global::System.Configuration.ConfigurationPropertyAttribute(global::Endjin.SpecFlow.Selenium.Configuration.CapabilityElement.BrowserVersionPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::Endjin.Selenium.SpecFlowPlugin.Configuration.CapabilityElement.BrowserVersionPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
         public virtual string BrowserVersion
         {
             get
             {
-                return ((string)(base[global::Endjin.SpecFlow.Selenium.Configuration.CapabilityElement.BrowserVersionPropertyName]));
+                return ((string)(base[global::Endjin.Selenium.SpecFlowPlugin.Configuration.CapabilityElement.BrowserVersionPropertyName]));
             }
             set
             {
-                base[global::Endjin.SpecFlow.Selenium.Configuration.CapabilityElement.BrowserVersionPropertyName] = value;
+                base[global::Endjin.Selenium.SpecFlowPlugin.Configuration.CapabilityElement.BrowserVersionPropertyName] = value;
             }
         }
         #endregion
@@ -508,16 +508,16 @@ namespace Endjin.SpecFlow.Selenium.Configuration
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
         [global::System.ComponentModel.DescriptionAttribute("The Platform.")]
-        [global::System.Configuration.ConfigurationPropertyAttribute(global::Endjin.SpecFlow.Selenium.Configuration.CapabilityElement.PlatformPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::Endjin.Selenium.SpecFlowPlugin.Configuration.CapabilityElement.PlatformPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
         public virtual string Platform
         {
             get
             {
-                return ((string)(base[global::Endjin.SpecFlow.Selenium.Configuration.CapabilityElement.PlatformPropertyName]));
+                return ((string)(base[global::Endjin.Selenium.SpecFlowPlugin.Configuration.CapabilityElement.PlatformPropertyName]));
             }
             set
             {
-                base[global::Endjin.SpecFlow.Selenium.Configuration.CapabilityElement.PlatformPropertyName] = value;
+                base[global::Endjin.Selenium.SpecFlowPlugin.Configuration.CapabilityElement.PlatformPropertyName] = value;
             }
         }
         #endregion
