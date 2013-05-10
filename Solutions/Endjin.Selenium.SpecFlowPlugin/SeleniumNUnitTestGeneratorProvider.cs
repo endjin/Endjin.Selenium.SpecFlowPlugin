@@ -54,12 +54,12 @@
             get { return false; }
         }
 
-        public void SetTestMethodCategories(TechTalk.SpecFlow.Generator.TestClassGenerationContext generationContext, CodeMemberMethod testMethod, IEnumerable<string> scenarioCategories)
+        public void SetTestMethodCategories(TestClassGenerationContext generationContext, CodeMemberMethod testMethod, IEnumerable<string> scenarioCategories)
         {
             this.codeDomHelper.AddAttributeForEachValue(testMethod, CategoryAttr, scenarioCategories);
         }
 
-        public void SetRow(TechTalk.SpecFlow.Generator.TestClassGenerationContext generationContext, CodeMemberMethod testMethod, IEnumerable<string> arguments, IEnumerable<string> tags, bool isIgnored)
+        public void SetRow(TestClassGenerationContext generationContext, CodeMemberMethod testMethod, IEnumerable<string> arguments, IEnumerable<string> tags, bool isIgnored)
         {
             var args = arguments.Select(arg => new CodeAttributeArgument(new CodePrimitiveExpression(arg))).ToList();
 
@@ -85,7 +85,7 @@
             }
         }
 
-        public void SetTestClass(TechTalk.SpecFlow.Generator.TestClassGenerationContext generationContext, string featureTitle, string featureDescription)
+        public void SetTestClass(TestClassGenerationContext generationContext, string featureTitle, string featureDescription)
         {
             this.codeDomHelper.AddAttribute(generationContext.TestClass, TestfixtureAttr);
             this.codeDomHelper.AddAttribute(generationContext.TestClass, DescriptionAttr, featureTitle);
@@ -114,37 +114,37 @@
             }
         }
 
-        public void SetTestClassCategories(TechTalk.SpecFlow.Generator.TestClassGenerationContext generationContext, IEnumerable<string> featureCategories)
+        public void SetTestClassCategories(TestClassGenerationContext generationContext, IEnumerable<string> featureCategories)
         {
             this.codeDomHelper.AddAttributeForEachValue(generationContext.TestClass, CategoryAttr, featureCategories);
         }
 
-        public void SetTestClassCleanupMethod(TechTalk.SpecFlow.Generator.TestClassGenerationContext generationContext)
+        public void SetTestClassCleanupMethod(TestClassGenerationContext generationContext)
         {
             this.codeDomHelper.AddAttribute(generationContext.TestClassCleanupMethod, TestfixtureteardownAttr);
         }
 
-        public void SetTestClassIgnore(TechTalk.SpecFlow.Generator.TestClassGenerationContext generationContext)
+        public void SetTestClassIgnore(TestClassGenerationContext generationContext)
         {
             this.codeDomHelper.AddAttribute(generationContext.TestClass, IgnoreAttr);
         }
 
-        public void SetTestClassInitializeMethod(TechTalk.SpecFlow.Generator.TestClassGenerationContext generationContext)
+        public void SetTestClassInitializeMethod(TestClassGenerationContext generationContext)
         {
             this.codeDomHelper.AddAttribute(generationContext.TestClassInitializeMethod, TestfixturesetupAttr);
         }
 
-        public void SetTestCleanupMethod(TechTalk.SpecFlow.Generator.TestClassGenerationContext generationContext)
+        public void SetTestCleanupMethod(TestClassGenerationContext generationContext)
         {
             this.codeDomHelper.AddAttribute(generationContext.TestCleanupMethod, TestteardownAttr);
         }
 
-        public void SetTestInitializeMethod(TechTalk.SpecFlow.Generator.TestClassGenerationContext generationContext)
+        public void SetTestInitializeMethod(TestClassGenerationContext generationContext)
         {
             this.codeDomHelper.AddAttribute(generationContext.TestInitializeMethod, TestsetupAttr);
         }
 
-        public void SetTestMethod(TechTalk.SpecFlow.Generator.TestClassGenerationContext generationContext, CodeMemberMethod testMethod, string scenarioTitle)
+        public void SetTestMethod(TestClassGenerationContext generationContext, CodeMemberMethod testMethod, string scenarioTitle)
         {
             this.codeDomHelper.AddAttribute(testMethod, TestAttr);
             this.codeDomHelper.AddAttribute(testMethod, DescriptionAttr, scenarioTitle);
@@ -155,12 +155,12 @@
             }
         }
 
-        public void SetTestMethodIgnore(TechTalk.SpecFlow.Generator.TestClassGenerationContext generationContext, CodeMemberMethod testMethod)
+        public void SetTestMethodIgnore(TestClassGenerationContext generationContext, CodeMemberMethod testMethod)
         {
             this.codeDomHelper.AddAttribute(testMethod, IgnoreAttr);
         }
 
-        public void SetRowTest(TechTalk.SpecFlow.Generator.TestClassGenerationContext generationContext, CodeMemberMethod testMethod, string scenarioTitle)
+        public void SetRowTest(TestClassGenerationContext generationContext, CodeMemberMethod testMethod, string scenarioTitle)
         {
             this.SetTestMethod(generationContext, testMethod, scenarioTitle);
 
@@ -170,15 +170,15 @@
             }
         }
 
-        public void SetTestMethodAsRow(TechTalk.SpecFlow.Generator.TestClassGenerationContext generationContext, CodeMemberMethod testMethod, string scenarioTitle, string exampleSetName, string variantName, IEnumerable<KeyValuePair<string, string>> arguments)
+        public void SetTestMethodAsRow(TestClassGenerationContext generationContext, CodeMemberMethod testMethod, string scenarioTitle, string exampleSetName, string variantName, IEnumerable<KeyValuePair<string, string>> arguments)
         {
         }
 
-        public void FinalizeTestClass(TechTalk.SpecFlow.Generator.TestClassGenerationContext generationContext)
+        public void FinalizeTestClass(TestClassGenerationContext generationContext)
         {
         }
 
-        private static void CreateInitializeSeleniumMethod(TechTalk.SpecFlow.Generator.TestClassGenerationContext generationContext)
+        private static void CreateInitializeSeleniumMethod(TestClassGenerationContext generationContext)
         {
             var initializeSelenium = new CodeMemberMethod
             {
@@ -192,7 +192,7 @@
             generationContext.TestClass.Members.Add(initializeSelenium);
         }
 
-        private static void CreateInitializeSeleniumOverloadMethod(TechTalk.SpecFlow.Generator.TestClassGenerationContext generationContext)
+        private static void CreateInitializeSeleniumOverloadMethod(TestClassGenerationContext generationContext)
         {
             var initializeSelenium = new CodeMemberMethod
             {
@@ -209,7 +209,7 @@
             generationContext.TestClass.Members.Add(initializeSelenium);
         }
 
-        private static void CleanUpSeleniumContext(TechTalk.SpecFlow.Generator.TestClassGenerationContext generationContext)
+        private static void CleanUpSeleniumContext(TestClassGenerationContext generationContext)
         {
             generationContext.ScenarioCleanupMethod.Statements.Add(new CodeSnippetStatement("            try { System.Threading.Thread.Sleep(50); this.driver.Quit(); } catch (System.Exception) {}"));
             generationContext.ScenarioCleanupMethod.Statements.Add(new CodeSnippetStatement("            this.driver = null;"));
@@ -258,20 +258,16 @@
                 var testName = string.Format("{0} on {1} version {2} on {3}{4}", testMethod.Name, capability.Browser, capability.BrowserVersion, capability.Platform, argsString);
 
                 var withBrowserArgs = new[]
-                                      {
-                                          new CodeAttributeArgument(new CodePrimitiveExpression(capability.Browser)),
-                                          new CodeAttributeArgument(new CodePrimitiveExpression(capability.BrowserVersion)),
-                                          new CodeAttributeArgument(new CodePrimitiveExpression(capability.Platform)),
-                                          new CodeAttributeArgument(new CodePrimitiveExpression(this.sauceLabSettings.Credentials.Url)),
-                                          new CodeAttributeArgument(new CodePrimitiveExpression(testName))
-                                      }
-                    .Concat(args ?? new List<CodeAttributeArgument>())
-                    .Concat(new[] 
-                            {
-                                //new CodeAttributeArgument("Category", new CodePrimitiveExpression(capability.Browser)),
-                                new CodeAttributeArgument("TestName", new CodePrimitiveExpression(testName))
-                            })
-                    .ToArray();
+                {
+                    new CodeAttributeArgument(new CodePrimitiveExpression(capability.Browser)),
+                    new CodeAttributeArgument(new CodePrimitiveExpression(capability.BrowserVersion)),
+                    new CodeAttributeArgument(new CodePrimitiveExpression(capability.Platform)),
+                    new CodeAttributeArgument(new CodePrimitiveExpression(this.sauceLabSettings.Credentials.Url)),
+                    new CodeAttributeArgument(new CodePrimitiveExpression(testName))
+                }
+                .Concat(args ?? new List<CodeAttributeArgument>())
+                .Concat(new[] { new CodeAttributeArgument("TestName", new CodePrimitiveExpression(testName)) })
+                .ToArray();
 
                 this.codeDomHelper.AddAttribute(testMethod, RowAttr, withBrowserArgs);
             }
