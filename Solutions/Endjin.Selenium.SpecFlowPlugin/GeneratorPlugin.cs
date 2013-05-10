@@ -25,7 +25,7 @@ namespace Endjin.Selenium.SpecFlowPlugin
 
             var codeDomHelper = container.Resolve<CodeDomHelper>(projectSettings.ProjectPlatformSettings.Language);
 
-            var generatorProvider = new SeleniumNUnitTestGeneratorProvider(codeDomHelper);
+            var generatorProvider = new SeleniumNUnitTestGeneratorProvider(codeDomHelper, projectSettings);
             
             container.RegisterInstanceAs<IUnitTestGeneratorProvider>(generatorProvider, "SeleniumNUnit");
         }

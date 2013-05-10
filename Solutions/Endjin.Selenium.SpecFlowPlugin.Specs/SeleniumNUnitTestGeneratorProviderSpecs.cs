@@ -52,7 +52,7 @@ namespace Endjin.Selenium.SpecFlowPlugin.Specs
             {
                 Feature feature = parser.Parse(reader, null);
 
-                var seleniumNUnitTestGeneratorProvider = new SeleniumNUnitTestGeneratorProvider(new CodeDomHelper(CodeDomProviderLanguage.CSharp));
+                var seleniumNUnitTestGeneratorProvider = new SeleniumNUnitTestGeneratorProvider(new CodeDomHelper(CodeDomProviderLanguage.CSharp), TODO);
 
                 var codeDomHelper = new CodeDomHelper(CodeDomProviderLanguage.CSharp);
 

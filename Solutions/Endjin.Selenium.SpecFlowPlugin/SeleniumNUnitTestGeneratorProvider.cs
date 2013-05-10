@@ -2,6 +2,7 @@
 {
     #region Using Directives
 
+    using System;
     using System.CodeDom;
     using System.Collections.Generic;
     using System.Configuration;
@@ -10,7 +11,9 @@
     using System.Linq;
     using System.Reflection;
     using Endjin.Selenium.SpecFlowPlugin.Configuration;
+    using Microsoft.Build.BuildEngine;
     using TechTalk.SpecFlow.Generator;
+    using TechTalk.SpecFlow.Generator.Interfaces;
     using TechTalk.SpecFlow.Generator.UnitTestProvider;
     using TechTalk.SpecFlow.Utils;
 
@@ -36,10 +39,47 @@
         private bool enableSauceLabs;
 
         private SauceLabsSection sauceLabSettings;
+        private ProjectSettings projectSettings;
 
-        public SeleniumNUnitTestGeneratorProvider(CodeDomHelper codeDomHelper)
+        public SeleniumNUnitTestGeneratorProvider(CodeDomHelper codeDomHelper, ProjectSettings projectSettings)
         {
             this.codeDomHelper = codeDomHelper;
+            this.projectSettings = projectSettings;
+        }
+
+        private SauceLabsSection GetSauceConfig()
+        {
+            var projectPath = Path.Combine(this.projectSettings.ProjectFolder, this.projectSettings.ProjectName) + ".csproj";
+
+            var project = Engine.GlobalEngine.GetLoadedProject(projectPath);
+            if (project == null)
+            {
+                project = new Microsoft.Build.BuildEngine.Project();
+                project.Load(projectPath, ProjectLoadSettings.IgnoreMissingImports);
+            }
+
+            var items = project.GetEvaluatedItemsByName("None").Cast<BuildItem>()
+                .Concat(project.GetEvaluatedItemsByName("Content").Cast<BuildItem>());
+
+            var configFilePath = string.Empty;
+
+            foreach (var buildItem in items)
+            {
+                var fileName = Path.GetFileName(buildItem.FinalItemSpec);
+                if (fileName != null && fileName.Equals("app.config", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    configFilePath = Path.Combine(this.projectSettings.ProjectFolder, buildItem.FinalItemSpec);
+                }
+            }
+
+            var exeConfig = new ExeConfigurationFileMap
+            {
+                ExeConfigFilename = configFilePath
+            };
+
+            var configuration = ConfigurationManager.OpenMappedExeConfiguration(exeConfig, ConfigurationUserLevel.None);
+
+            return configuration.GetSection("sauceLabsSection") as SauceLabsSection;
         }
 
         public bool SupportsRowTests
@@ -138,9 +178,7 @@
             
             if (this.enableSauceLabs)
             {
-                var configuration = this.GetConfiguration(generationContext);
-                
-                this.sauceLabSettings = configuration.GetSection("sauceLabsSection") as SauceLabsSection;
+                this.sauceLabSettings = this.GetSauceConfig();
 
                 if (this.sauceLabSettings == null)
                 {
@@ -161,24 +199,6 @@
 
                 CleanUpSeleniumContext(generationContext); 
             }
-        }
-
-        private System.Configuration.Configuration GetConfiguration(TestClassGenerationContext generationContext)
-        {
-            
-            
-            var assembly = Assembly.GetAssembly();
-
-            var fullPath = assembly.Location;
-
-            string directory = Path.GetDirectoryName(fullPath);
-
-            var exeConfig = new ExeConfigurationFileMap
-                {
-                    ExeConfigFilename = Path.Combine(directory, string.Format("{0}.config", assembly.FullName))
-                };
-
-            return ConfigurationManager.OpenMappedExeConfiguration(exeConfig, ConfigurationUserLevel.None);
         }
 
         public void SetTestClassCategories(TechTalk.SpecFlow.Generator.TestClassGenerationContext generationContext, IEnumerable<string> featureCategories)
