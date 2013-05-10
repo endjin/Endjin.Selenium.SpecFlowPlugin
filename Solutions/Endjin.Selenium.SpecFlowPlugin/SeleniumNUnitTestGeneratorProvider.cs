@@ -2,6 +2,7 @@
 {
     #region Using Directives
 
+    using System;
     using System.CodeDom;
     using System.Collections.Generic;
     using System.Configuration;
@@ -84,52 +85,6 @@
             }
         }
 
-        private void SetSauceAttributes(CodeMemberMethod testMethod, List<CodeAttributeArgument> args = null)
-        {
-            var argsString = string.Empty;
-
-            if (args != null && args.Any())
-            {
-                argsString = " with: " + string.Concat(args.Take(args.Count - 1).Select(arg => string.Format("\"{0}\" ,", ((CodePrimitiveExpression)arg.Value).Value)));
-                argsString = argsString.TrimEnd(' ', ',');
-            }
-
-            foreach (var codeAttributeDeclaration in testMethod.CustomAttributes.Cast<CodeAttributeDeclaration>().Where(attr => attr.Name == RowAttr && attr.Arguments.Count == 3).ToList())
-            {
-                testMethod.CustomAttributes.Remove(codeAttributeDeclaration);
-            }
-
-            foreach (CapabilityElement capability in this.sauceLabSettings.Capabilities)
-            {
-                var testName = string.Format("{0} on {1} version {2} on {3}{4}", testMethod.Name, capability.Browser, capability.BrowserVersion, capability.Platform, argsString);
-
-                var withBrowserArgs = new[]
-                    {
-                        new CodeAttributeArgument(new CodePrimitiveExpression(capability.Browser)),
-                        new CodeAttributeArgument(new CodePrimitiveExpression(capability.BrowserVersion)),
-                        new CodeAttributeArgument(new CodePrimitiveExpression(capability.Platform)),
-                        new CodeAttributeArgument(new CodePrimitiveExpression(this.sauceLabSettings.Credentials.Url)),
-                        new CodeAttributeArgument(new CodePrimitiveExpression(testName))
-                    }
-                .Concat(args ?? new List<CodeAttributeArgument>())
-                .Concat(new[] 
-                    {
-                        //new CodeAttributeArgument("Category", new CodePrimitiveExpression(capability.Browser)),
-                        new CodeAttributeArgument("TestName", new CodePrimitiveExpression(testName))
-                    })
-                .ToArray();
-
-                this.codeDomHelper.AddAttribute(testMethod, RowAttr, withBrowserArgs);
-            }
-
-            testMethod.Statements.Insert(0, new CodeSnippetStatement("            InitializeSeleniumSauce(browser, version, platform, name, url);"));
-            testMethod.Parameters.Insert(0, new CodeParameterDeclarationExpression("System.string", "browser"));
-            testMethod.Parameters.Insert(1, new CodeParameterDeclarationExpression("System.string", "version"));
-            testMethod.Parameters.Insert(2, new CodeParameterDeclarationExpression("System.string", "platform"));
-            testMethod.Parameters.Insert(3, new CodeParameterDeclarationExpression("System.string", "url"));
-            testMethod.Parameters.Insert(4, new CodeParameterDeclarationExpression("System.string", "testName"));
-        }
-
         public void SetTestClass(TechTalk.SpecFlow.Generator.TestClassGenerationContext generationContext, string featureTitle, string featureDescription)
         {
             this.codeDomHelper.AddAttribute(generationContext.TestClass, TestfixtureAttr);
@@ -142,11 +97,6 @@
                 var configuration = this.GetConfiguration();
 
                 this.sauceLabSettings = configuration.GetSection("sauceLabsSection") as SauceLabsSection;
-
-                if (this.sauceLabSettings == null)
-                {
-                    Debug.WriteLine("Configuration Section 'sauceLabsSection' could not be found.");
-                }
 
                 generationContext.TestClass.Members.Add(new CodeMemberField("OpenQA.Selenium.IWebDriver", "driver"));
 
@@ -162,31 +112,6 @@
 
                 CleanUpSeleniumContext(generationContext); 
             }
-        }
-
-        private System.Configuration.Configuration GetConfiguration()
-        {
-            var configPath = string.Empty;
-            var configFileTemplate = @"{0}\{1}.config";
-
-            var appConfig = string.Format(configFileTemplate, this.projectSettings.ProjectFolder, "App");
-            var webConfig = string.Format(configFileTemplate, this.projectSettings.ProjectFolder, "Web");
-
-            if (File.Exists(appConfig))
-            {
-                configPath = appConfig;
-            }
-            else if (File.Exists(webConfig))
-            {
-                configPath = webConfig;
-            }
-
-            var exeConfig = new ExeConfigurationFileMap
-            {
-                ExeConfigFilename = configPath
-            };
-
-            return ConfigurationManager.OpenMappedExeConfiguration(exeConfig, ConfigurationUserLevel.None);
         }
 
         public void SetTestClassCategories(TechTalk.SpecFlow.Generator.TestClassGenerationContext generationContext, IEnumerable<string> featureCategories)
@@ -289,6 +214,74 @@
             generationContext.ScenarioCleanupMethod.Statements.Add(new CodeSnippetStatement("            try { System.Threading.Thread.Sleep(50); this.driver.Quit(); } catch (System.Exception) {}"));
             generationContext.ScenarioCleanupMethod.Statements.Add(new CodeSnippetStatement("            this.driver = null;"));
             generationContext.ScenarioCleanupMethod.Statements.Add(new CodeSnippetStatement("            ScenarioContext.Current.Remove(\"Driver\");"));
+        }
+
+        private System.Configuration.Configuration GetConfiguration()
+        {
+            var appConfig = string.Format(@"{0}\{1}.config", this.projectSettings.ProjectFolder, "App");
+
+            if (!File.Exists(appConfig))
+            {
+                throw new FileNotFoundException(string.Format("Could not find a valid configuration file at location '{0}'", appConfig));
+            }
+
+            var exeConfig = new ExeConfigurationFileMap
+                            {
+                                ExeConfigFilename = appConfig
+                            };
+
+            return ConfigurationManager.OpenMappedExeConfiguration(exeConfig, ConfigurationUserLevel.None);
+        }
+
+        private void SetSauceAttributes(CodeMemberMethod testMethod, List<CodeAttributeArgument> args = null)
+        {
+            var argsString = string.Empty;
+
+            if (args != null && args.Any())
+            {
+                argsString = " with: " + string.Concat(args.Take(args.Count - 1).Select(arg => string.Format("\"{0}\" ,", ((CodePrimitiveExpression)arg.Value).Value)));
+                argsString = argsString.TrimEnd(' ', ',');
+            }
+
+            foreach (var codeAttributeDeclaration in testMethod.CustomAttributes.Cast<CodeAttributeDeclaration>().Where(attr => attr.Name == RowAttr && attr.Arguments.Count == 3).ToList())
+            {
+                testMethod.CustomAttributes.Remove(codeAttributeDeclaration);
+            }
+
+            if (this.sauceLabSettings == null)
+            {
+                return;
+            }
+
+            foreach (CapabilityElement capability in this.sauceLabSettings.Capabilities)
+            {
+                var testName = string.Format("{0} on {1} version {2} on {3}{4}", testMethod.Name, capability.Browser, capability.BrowserVersion, capability.Platform, argsString);
+
+                var withBrowserArgs = new[]
+                                      {
+                                          new CodeAttributeArgument(new CodePrimitiveExpression(capability.Browser)),
+                                          new CodeAttributeArgument(new CodePrimitiveExpression(capability.BrowserVersion)),
+                                          new CodeAttributeArgument(new CodePrimitiveExpression(capability.Platform)),
+                                          new CodeAttributeArgument(new CodePrimitiveExpression(this.sauceLabSettings.Credentials.Url)),
+                                          new CodeAttributeArgument(new CodePrimitiveExpression(testName))
+                                      }
+                    .Concat(args ?? new List<CodeAttributeArgument>())
+                    .Concat(new[] 
+                            {
+                                //new CodeAttributeArgument("Category", new CodePrimitiveExpression(capability.Browser)),
+                                new CodeAttributeArgument("TestName", new CodePrimitiveExpression(testName))
+                            })
+                    .ToArray();
+
+                this.codeDomHelper.AddAttribute(testMethod, RowAttr, withBrowserArgs);
+            }
+
+            testMethod.Statements.Insert(0, new CodeSnippetStatement("            InitializeSeleniumSauce(browser, version, platform, name, url);"));
+            testMethod.Parameters.Insert(0, new CodeParameterDeclarationExpression("System.string", "browser"));
+            testMethod.Parameters.Insert(1, new CodeParameterDeclarationExpression("System.string", "version"));
+            testMethod.Parameters.Insert(2, new CodeParameterDeclarationExpression("System.string", "platform"));
+            testMethod.Parameters.Insert(3, new CodeParameterDeclarationExpression("System.string", "url"));
+            testMethod.Parameters.Insert(4, new CodeParameterDeclarationExpression("System.string", "testName"));
         }
     }
 }
