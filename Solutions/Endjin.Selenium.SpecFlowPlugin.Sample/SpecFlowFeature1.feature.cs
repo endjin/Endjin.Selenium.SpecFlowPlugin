@@ -61,9 +61,9 @@ namespace Endjin.Selenium.SpecFlowPlugin.Sample
         
         public virtual void ScenarioSetup(TechTalk.SpecFlow.ScenarioInfo scenarioInfo)
         {
+            testRunner.OnScenarioStart(scenarioInfo);
             if(this.driver != null)
                 ScenarioContext.Current.Add("Driver", this.driver);
-            testRunner.OnScenarioStart(scenarioInfo);
         }
         
         public virtual void ScenarioCleanup()

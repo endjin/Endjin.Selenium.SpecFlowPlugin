@@ -34,7 +34,7 @@ namespace Endjin.Selenium.SpecFlowPlugin.Specs
     #endregion
 
     [Subject(typeof(SeleniumNUnitTestGeneratorProvider))]
-    public class when_the_selenium_nunit_test_generator_is_asked_to_generate_tests
+    public class when_the_selenium_nunit_test_generator_is_asked_to_generate_tests_with_enable_sauce_labs_tag
     {
         private const string SampleFeatureFile = @"
             @EnableSauceLabs
@@ -62,6 +62,44 @@ namespace Endjin.Selenium.SpecFlowPlugin.Specs
 
                 var converter = new UnitTestFeatureGenerator(seleniumNUnitTestGeneratorProvider, codeDomHelper, new GeneratorConfiguration { AllowRowTests = true, AllowDebugGeneratedFiles = true }, new DecoratorRegistryStub());
                     
+                CodeNamespace code = converter.GenerateUnitTestFixture(feature, "TestClassName", "Target.Namespace");
+            }
+        };
+
+        Because of = () => { };
+
+        It should_ = () => { };
+    }
+
+    [Subject(typeof(SeleniumNUnitTestGeneratorProvider))]
+    public class when_the_selenium_nunit_test_generator_is_asked_to_generate_tests_without_enable_sauce_labs_tag
+    {
+        private const string SampleFeatureFile = @"
+            
+            Feature: Sample feature file for a custom generator provider
+            
+            Scenario: Simple scenario
+				Given there is something
+				When I do something
+				Then something should happen";
+
+        Establish context = () =>
+        {
+            var projectSettings = new ProjectSettings();
+            var parser = new SpecFlowLangParser(new CultureInfo("en-US"));
+
+            projectSettings.ProjectFolder = @"C:\_Projects\_endjin\IP\Endjin.SpecFlow.Selenium\Solutions\Endjin.Selenium.SpecFlowPlugin.Sample";
+
+            using (var reader = new StringReader(SampleFeatureFile))
+            {
+                Feature feature = parser.Parse(reader, null);
+
+                var seleniumNUnitTestGeneratorProvider = new SeleniumNUnitTestGeneratorProvider(new CodeDomHelper(CodeDomProviderLanguage.CSharp), projectSettings);
+
+                var codeDomHelper = new CodeDomHelper(CodeDomProviderLanguage.CSharp);
+
+                var converter = new UnitTestFeatureGenerator(seleniumNUnitTestGeneratorProvider, codeDomHelper, new GeneratorConfiguration { AllowRowTests = true, AllowDebugGeneratedFiles = true }, new DecoratorRegistryStub());
+
                 CodeNamespace code = converter.GenerateUnitTestFixture(feature, "TestClassName", "Target.Namespace");
             }
         };

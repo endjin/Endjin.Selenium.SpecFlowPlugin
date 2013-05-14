@@ -101,13 +101,6 @@
 
                 generationContext.TestClass.Members.Add(new CodeMemberField("OpenQA.Selenium.IWebDriver", "driver"));
 
-                if (!this.scenarioSetupMethodsAdded)
-                {
-                    generationContext.ScenarioInitializeMethod.Statements.Add(new CodeSnippetStatement("            if(this.driver != null)"));
-                    generationContext.ScenarioInitializeMethod.Statements.Add(new CodeSnippetStatement("                ScenarioContext.Current.Add(\"Driver\", this.driver);"));
-                    this.scenarioSetupMethodsAdded = true;
-                }
-
                 CreateInitializeSeleniumMethod(generationContext);
                 CreateInitializeSeleniumOverloadMethod(generationContext);
 
@@ -143,6 +136,16 @@
         public void SetTestInitializeMethod(TestClassGenerationContext generationContext)
         {
             this.codeDomHelper.AddAttribute(generationContext.TestInitializeMethod, TestsetupAttr);
+
+            if (this.enableSauceLabs)
+            {
+                if (!this.scenarioSetupMethodsAdded)
+                {
+                    generationContext.ScenarioInitializeMethod.Statements.Add(new CodeSnippetStatement("            if(this.driver != null)"));
+                    generationContext.ScenarioInitializeMethod.Statements.Add(new CodeSnippetStatement("                ScenarioContext.Current.Add(\"Driver\", this.driver);"));
+                    this.scenarioSetupMethodsAdded = true;
+                } 
+            }
         }
 
         public void SetTestMethod(TestClassGenerationContext generationContext, CodeMemberMethod testMethod, string scenarioTitle)
