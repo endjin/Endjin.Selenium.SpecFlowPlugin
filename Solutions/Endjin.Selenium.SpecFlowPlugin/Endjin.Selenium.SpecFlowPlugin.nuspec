@@ -1,0 +1,27 @@
+﻿<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Endjin.Selenium.SpecFlowPlugin</id>
+    <version>1.0</version>
+    <title>Endjin.Selenium.SpecFlowPlugin</title>
+    <authors>endjin</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <summary>SpecFlow plugin for generating tests for use with Selenium and Sauce Labs</summary>
+    <description>
+      SpecFlow plugin for generating tests for use with Selenium and Sauce Labs
+    </description>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System.Configuration"  />
+    </frameworkAssemblies>
+    <dependencies>
+      <dependency id="SpecFlow.CustomPlugin" version="1.9.0" />
+      <dependency id="SpecFlow.NUnit" version="1.1.1" />
+      <dependency id="Selenium.WebDriver" version="2.32.0" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="Endjin.Selenium.SpecFlowPlugin.dll" target="tools" />
+    <file src="Endjin.Selenium.SpecFlowPlugin.dll" target="lib\net45" />
+    <file src="..\Solutions\Endjin.Selenium.SpecFlowPlugin\App.config.transform" target="content" />
+  </files>
+</package>

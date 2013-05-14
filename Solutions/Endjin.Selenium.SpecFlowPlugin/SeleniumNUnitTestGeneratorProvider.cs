@@ -32,16 +32,19 @@
         private const string DescriptionAttr = "NUnit.Framework.DescriptionAttribute";
 
         private readonly CodeDomHelper codeDomHelper;
-        private readonly ProjectSettings projectSettings;
+        private ProjectSettings projectSettings;
 
         private bool scenarioSetupMethodsAdded;
         private bool enableSauceLabs;
         private SauceLabsSection sauceLabSettings;
 
+        private readonly CustomConfigResolver customConfigResolver;
+
         public SeleniumNUnitTestGeneratorProvider(CodeDomHelper codeDomHelper, ProjectSettings projectSettings)
         {
             this.codeDomHelper = codeDomHelper;
             this.projectSettings = projectSettings;
+            this.customConfigResolver = new CustomConfigResolver();
         }
 
         public bool SupportsRowTests
@@ -94,9 +97,7 @@
             
             if (this.enableSauceLabs)
             {
-                var configuration = this.GetConfiguration();
-
-                this.sauceLabSettings = configuration.GetSection("sauceLabsSection") as SauceLabsSection;
+                this.sauceLabSettings = this.GetSauceLabsConfiguration();
 
                 generationContext.TestClass.Members.Add(new CodeMemberField("OpenQA.Selenium.IWebDriver", "driver"));
 
@@ -146,12 +147,18 @@
 
         public void SetTestMethod(TestClassGenerationContext generationContext, CodeMemberMethod testMethod, string scenarioTitle)
         {
+            this.SetTestMethod(generationContext, testMethod, scenarioTitle, false);
+        }
+
+        private void SetTestMethod(TestClassGenerationContext generationContext, CodeMemberMethod testMethod, string scenarioTitle, bool isRowTest)
+        {
             this.codeDomHelper.AddAttribute(testMethod, TestAttr);
             this.codeDomHelper.AddAttribute(testMethod, DescriptionAttr, scenarioTitle);
 
-            if (this.enableSauceLabs)
+            if (this.enableSauceLabs && !isRowTest)
             {
                 this.SetSauceAttributes(testMethod);
+                this.SetInitializeSeleniumMethodInScenario(testMethod);
             }
         }
 
@@ -162,11 +169,11 @@
 
         public void SetRowTest(TestClassGenerationContext generationContext, CodeMemberMethod testMethod, string scenarioTitle)
         {
-            this.SetTestMethod(generationContext, testMethod, scenarioTitle);
+            this.SetTestMethod(generationContext, testMethod, scenarioTitle, true);
 
             if (this.enableSauceLabs)
             {
-                this.SetSauceAttributes(testMethod);
+                this.SetInitializeSeleniumMethodInScenario(testMethod);
             }
         }
 
@@ -176,6 +183,10 @@
 
         public void FinalizeTestClass(TestClassGenerationContext generationContext)
         {
+            this.projectSettings = null;
+            this.enableSauceLabs = false;
+            this.scenarioSetupMethodsAdded = false;
+            this.sauceLabSettings = null;
         }
 
         private static void CreateInitializeSeleniumMethod(TestClassGenerationContext generationContext)
@@ -216,21 +227,18 @@
             generationContext.ScenarioCleanupMethod.Statements.Add(new CodeSnippetStatement("            ScenarioContext.Current.Remove(\"Driver\");"));
         }
 
-        private System.Configuration.Configuration GetConfiguration()
+        private SauceLabsSection GetSauceLabsConfiguration()
         {
-            var appConfig = string.Format(@"{0}\{1}.config", this.projectSettings.ProjectFolder, "App");
+            var appConfigPath = string.Format(@"{0}\{1}.config", this.projectSettings.ProjectFolder, "App");
 
-            if (!File.Exists(appConfig))
+            if (!File.Exists(appConfigPath))
             {
-                throw new FileNotFoundException(string.Format("Could not find a valid configuration file at location '{0}'", appConfig));
+                throw new FileNotFoundException(string.Format("Could not find a valid configuration file at location '{0}'", appConfigPath));
             }
 
-            var exeConfig = new ExeConfigurationFileMap
-                            {
-                                ExeConfigFilename = appConfig
-                            };
+            var configDefiningAssemblyPath = Assembly.GetAssembly(typeof(SeleniumNUnitTestGeneratorProvider)).Location;
 
-            return ConfigurationManager.OpenMappedExeConfiguration(exeConfig, ConfigurationUserLevel.None);
+            return this.customConfigResolver.GetCustomConfig<SauceLabsSection>(configDefiningAssemblyPath , appConfigPath, "sauceLabsSection");
         }
 
         private void SetSauceAttributes(CodeMemberMethod testMethod, List<CodeAttributeArgument> args = null)
@@ -272,7 +280,14 @@
                 this.codeDomHelper.AddAttribute(testMethod, RowAttr, withBrowserArgs);
             }
 
-            testMethod.Statements.Insert(0, new CodeSnippetStatement("            InitializeSeleniumSauce(browser, version, platform, name, url);"));
+                
+        }
+
+        private void SetInitializeSeleniumMethodInScenario(CodeMemberMethod testMethod)
+        {
+            testMethod.Statements.Insert(0,
+                                         new CodeSnippetStatement(
+                                             "            InitializeSeleniumSauce(browser, version, platform, testName, url);"));
             testMethod.Parameters.Insert(0, new CodeParameterDeclarationExpression("System.string", "browser"));
             testMethod.Parameters.Insert(1, new CodeParameterDeclarationExpression("System.string", "version"));
             testMethod.Parameters.Insert(2, new CodeParameterDeclarationExpression("System.string", "platform"));

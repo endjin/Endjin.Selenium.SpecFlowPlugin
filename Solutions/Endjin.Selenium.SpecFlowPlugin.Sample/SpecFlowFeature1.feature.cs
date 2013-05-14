@@ -86,8 +86,11 @@ namespace Endjin.Selenium.SpecFlowPlugin.Sample
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Add two numbers")]
-        public virtual void AddTwoNumbers()
+        [NUnit.Framework.TestCaseAttribute("Chrome", "10", "Windows 8", "url", "AddTwoNumbers on Chrome version 10 on Windows 8", TestName="AddTwoNumbers on Chrome version 10 on Windows 8")]
+        [NUnit.Framework.TestCaseAttribute("InternetExplorer", "10", "Windows 8", "url", "AddTwoNumbers on InternetExplorer version 10 on Windows 8", TestName="AddTwoNumbers on InternetExplorer version 10 on Windows 8")]
+        public virtual void AddTwoNumbers(string browser, string version, string platform, string url, string testName)
         {
+            InitializeSeleniumSauce(browser, version, platform, testName, url);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add two numbers", ((string[])(null)));
 #line 8
 this.ScenarioSetup(scenarioInfo);
@@ -99,6 +102,60 @@ this.ScenarioSetup(scenarioInfo);
  testRunner.When("I press add", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 12
  testRunner.Then("the result should be 120 on the screen", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Add three numbers")]
+        [NUnit.Framework.TestCaseAttribute("Chrome", "10", "Windows 8", "url", "AddThreeNumbers on Chrome version 10 on Windows 8", TestName="AddThreeNumbers on Chrome version 10 on Windows 8")]
+        [NUnit.Framework.TestCaseAttribute("InternetExplorer", "10", "Windows 8", "url", "AddThreeNumbers on InternetExplorer version 10 on Windows 8", TestName="AddThreeNumbers on InternetExplorer version 10 on Windows 8")]
+        [NUnit.Framework.CategoryAttribute("SomeTag")]
+        public virtual void AddThreeNumbers(string browser, string version, string platform, string url, string testName)
+        {
+            InitializeSeleniumSauce(browser, version, platform, testName, url);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add three numbers", new string[] {
+                        "SomeTag"});
+#line 15
+this.ScenarioSetup(scenarioInfo);
+#line 16
+ testRunner.Given("I have entered 50 into the calculator", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 17
+ testRunner.And("I have entered 70 into the calculator", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 18
+ testRunner.And("I have enetered 20 into the calculator", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 19
+ testRunner.When("I press add", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 20
+ testRunner.Then("the result should be 140 on the screen", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Add Two Numbers")]
+        [NUnit.Framework.TestCaseAttribute("Chrome", "10", "Windows 8", "url", "AddTwoNumbers on Chrome version 10 on Windows 8 with: \"50\" ,\"70\" ,\"120\"", "50", "70", "120", null, TestName="AddTwoNumbers on Chrome version 10 on Windows 8 with: \"50\" ,\"70\" ,\"120\"")]
+        [NUnit.Framework.TestCaseAttribute("InternetExplorer", "10", "Windows 8", "url", "AddTwoNumbers on InternetExplorer version 10 on Windows 8 with: \"50\" ,\"70\" ,\"120\"" +
+            "", "50", "70", "120", null, TestName="AddTwoNumbers on InternetExplorer version 10 on Windows 8 with: \"50\" ,\"70\" ,\"120\"" +
+            "")]
+        [NUnit.Framework.TestCaseAttribute("Chrome", "10", "Windows 8", "url", "AddTwoNumbers on Chrome version 10 on Windows 8 with: \"1\" ,\"10\" ,\"11\"", "1", "10", "11", null, TestName="AddTwoNumbers on Chrome version 10 on Windows 8 with: \"1\" ,\"10\" ,\"11\"")]
+        [NUnit.Framework.TestCaseAttribute("InternetExplorer", "10", "Windows 8", "url", "AddTwoNumbers on InternetExplorer version 10 on Windows 8 with: \"1\" ,\"10\" ,\"11\"", "1", "10", "11", null, TestName="AddTwoNumbers on InternetExplorer version 10 on Windows 8 with: \"1\" ,\"10\" ,\"11\"")]
+        public virtual void AddTwoNumbers(string browser, string version, string platform, string url, string testName, string summandOne, string summandTwo, string result, string[] exampleTags)
+        {
+            InitializeSeleniumSauce(browser, version, platform, testName, url);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Two Numbers", exampleTags);
+#line 22
+this.ScenarioSetup(scenarioInfo);
+#line 23
+ testRunner.Given("I navigated to /", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 24
+ testRunner.And(string.Format("I have entered {0} into summandOne calculator", summandOne), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 25
+ testRunner.And(string.Format("I have entered {0} into summandTwo calculator", summandTwo), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 26
+ testRunner.When("I press add", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 27
+ testRunner.Then(string.Format("the result should be {0} on the screen", result), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

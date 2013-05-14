@@ -14,6 +14,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Endjin.Selenium.SpecFlowPlu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Endjin.Selenium.SpecFlowPlugin.Sample", "Endjin.Selenium.SpecFlowPlugin.Sample\Endjin.Selenium.SpecFlowPlugin.Sample.csproj", "{A116662E-3C5D-47D3-86CE-7A44DC3837AA}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "@Build", "@Build", "{3FB3771E-E02C-4879-B013-54778F1DF817}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Build", "..\Build\Build.csproj", "{CEFAA4F0-A83F-42D7-85E4-BE5DDC157D5C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,8 +36,15 @@ Global
 		{A116662E-3C5D-47D3-86CE-7A44DC3837AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A116662E-3C5D-47D3-86CE-7A44DC3837AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A116662E-3C5D-47D3-86CE-7A44DC3837AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEFAA4F0-A83F-42D7-85E4-BE5DDC157D5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEFAA4F0-A83F-42D7-85E4-BE5DDC157D5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEFAA4F0-A83F-42D7-85E4-BE5DDC157D5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEFAA4F0-A83F-42D7-85E4-BE5DDC157D5C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CEFAA4F0-A83F-42D7-85E4-BE5DDC157D5C} = {3FB3771E-E02C-4879-B013-54778F1DF817}
 	EndGlobalSection
 EndGlobal

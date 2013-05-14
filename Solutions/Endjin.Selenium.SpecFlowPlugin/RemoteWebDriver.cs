@@ -2,6 +2,7 @@
 {
     using System;
     using System.Configuration;
+    using Endjin.Selenium.SpecFlowPlugin.Configuration;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Remote;
 
@@ -39,8 +40,15 @@
 
             if (sauceLabs)
             {
-                var userName = ConfigurationManager.AppSettings["sauceLabsUserName"];
-                var accessKey = ConfigurationManager.AppSettings["sauceLabsAccessKey"];
+                var sauceLabsSettings = ConfigurationManager.GetSection("sauceLabsSection") as SauceLabsSection;
+
+                if (sauceLabsSettings == null)
+                {
+                    throw new Exception("Unable to retrieve Sauce Labs settings from configuration");
+                }
+
+                var userName = sauceLabsSettings.Credentials.UserName;
+                var accessKey = sauceLabsSettings.Credentials.AccessKey;
                 capabilities.SetCapability("username", userName);
                 capabilities.SetCapability("accessKey", accessKey);
                 capabilities.SetCapability("name", testName); 
