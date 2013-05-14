@@ -7,7 +7,7 @@
 
   <Import Project="$(CloudExtensionsDir)\Microsoft.WindowsAzure.targets" />-->
   <Import Project="Build.properties" />
-  <Import Project="CodeAnalysis\StyleCop.targets" />
+  <!--<Import Project="CodeAnalysis\StyleCop.targets" />-->
   <Import Project="Common\Global.imports" />
   <Import Project="Compile\Compile.targets" />
   <Import Project="Drop\Drop.targets" />
@@ -16,7 +16,7 @@
 
   <PropertyGroup>
     <BuildDependsOn>
-      StyleCop;
+      <!--StyleCop;-->
       Compile;
       RunTests;
       Package;
