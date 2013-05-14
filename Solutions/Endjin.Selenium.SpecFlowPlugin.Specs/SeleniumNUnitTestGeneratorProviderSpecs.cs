@@ -22,6 +22,7 @@ namespace Endjin.Selenium.SpecFlowPlugin.Specs
     using System.CodeDom;
     using System.Globalization;
     using System.IO;
+    using System.Reflection;
     using Endjin.Selenium.SpecFlowPlugin;
     using Machine.Specifications;
     using TechTalk.SpecFlow.Generator;
@@ -50,7 +51,7 @@ namespace Endjin.Selenium.SpecFlowPlugin.Specs
             var projectSettings = new ProjectSettings();
             var parser = new SpecFlowLangParser(new CultureInfo("en-US"));
 
-            projectSettings.ProjectFolder = @"C:\_Projects\_endjin\IP\Endjin.SpecFlow.Selenium\Solutions\Endjin.Selenium.SpecFlowPlugin.Sample";
+            projectSettings.ProjectFolder = @"C:\_projects\internal\Endjin.Selenium.SpecFlowPlugin\Solutions\Endjin.Selenium.SpecFlowPlugin.Specs";
 
             using (var reader = new StringReader(SampleFeatureFile))
             {
@@ -88,7 +89,7 @@ namespace Endjin.Selenium.SpecFlowPlugin.Specs
             var projectSettings = new ProjectSettings();
             var parser = new SpecFlowLangParser(new CultureInfo("en-US"));
 
-            projectSettings.ProjectFolder = @"C:\_Projects\_endjin\IP\Endjin.SpecFlow.Selenium\Solutions\Endjin.Selenium.SpecFlowPlugin.Sample";
+            projectSettings.ProjectFolder = @"C:\_projects\internal\Endjin.Selenium.SpecFlowPlugin\Solutions\Endjin.Selenium.SpecFlowPlugin.Specs";
 
             using (var reader = new StringReader(SampleFeatureFile))
             {

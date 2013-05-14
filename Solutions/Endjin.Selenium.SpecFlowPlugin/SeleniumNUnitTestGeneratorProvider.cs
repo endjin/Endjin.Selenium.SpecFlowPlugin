@@ -93,8 +93,11 @@
             this.codeDomHelper.AddAttribute(generationContext.TestClass, TestfixtureAttr);
             this.codeDomHelper.AddAttribute(generationContext.TestClass, DescriptionAttr, featureTitle);
 
-            this.enableSauceLabs = generationContext.Feature.Tags.Any(x => x.Name == "EnableSauceLabs");
-            
+            if (generationContext.Feature.Tags != null)
+            {
+                this.enableSauceLabs = generationContext.Feature.Tags.Any(x => x.Name == "EnableSauceLabs");
+            }
+
             if (this.enableSauceLabs)
             {
                 this.sauceLabSettings = this.GetSauceLabsConfiguration();
