@@ -76,6 +76,7 @@
     <Compile Include="Configuration\SauceLabsSectionSpecs.cs" />
     <Compile Include="DecoratorRegistryStub.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SauceRestSpecs.cs" />
     <Compile Include="SeleniumNUnitTestGeneratorProviderSpecs.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -226,6 +226,16 @@
             generationContext.TestClass.Members.Add(initializeSelenium);
         }
 
+        private static void CreateUpdateSauceLabsStatusMethod(TestClassGenerationContext generationContext)
+        {
+            var updateSauceLabsStatus = new CodeMemberMethod
+            {
+                Name = "UpdateSauceLabsStatus"
+            };
+
+
+        }
+
         private static void CleanUpSeleniumContext(TestClassGenerationContext generationContext)
         {
             generationContext.ScenarioCleanupMethod.Statements.Add(new CodeSnippetStatement("            try { System.Threading.Thread.Sleep(50); this.driver.Quit(); } catch (System.Exception) {}"));
