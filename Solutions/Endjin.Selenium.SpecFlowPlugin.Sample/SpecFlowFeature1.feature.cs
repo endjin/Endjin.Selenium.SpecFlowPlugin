@@ -14,6 +14,7 @@
 namespace Endjin.Selenium.SpecFlowPlugin.Sample
 {
     using TechTalk.SpecFlow;
+    using Endjin.Selenium.SpecFlowPlugin;
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "1.9.0.77")]

@@ -102,6 +102,7 @@
             {
                 this.sauceLabSettings = this.GetSauceLabsConfiguration();
 
+                generationContext.Namespace.Imports.Add(new CodeNamespaceImport("Endjin.Selenium.SpecFlowPlugin"));
                 generationContext.TestClass.Members.Add(new CodeMemberField("Endjin.Selenium.SpecFlowPlugin.RemoteWebDriver", "driver"));
                 generationContext.TestClass.Members.Add(new CodeMemberField("Endjin.Selenium.SpecFlowPlugin.SauceRest", "sauceRest"));
 
