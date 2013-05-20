@@ -102,12 +102,15 @@
             {
                 this.sauceLabSettings = this.GetSauceLabsConfiguration();
 
-                generationContext.TestClass.Members.Add(new CodeMemberField("OpenQA.Selenium.IWebDriver", "driver"));
+                generationContext.TestClass.Members.Add(new CodeMemberField("Endjin.Selenium.SpecFlowPlugin.RemoteWebDriver", "driver"));
+                generationContext.TestClass.Members.Add(new CodeMemberField("Endjin.Selenium.SpecFlowPlugin.SauceRest", "sauceRest"));
 
                 CreateInitializeSeleniumMethod(generationContext);
                 CreateInitializeSeleniumOverloadMethod(generationContext);
 
-                CleanUpSeleniumContext(generationContext); 
+                CreateUpdateSauceLabsStatusMethod(generationContext);
+                UpdateSauceLabsStatus(generationContext);
+                CleanUpSeleniumContext(generationContext);
             }
         }
 
@@ -146,6 +149,7 @@
                 {
                     generationContext.ScenarioInitializeMethod.Statements.Add(new CodeSnippetStatement("            if(this.driver != null)"));
                     generationContext.ScenarioInitializeMethod.Statements.Add(new CodeSnippetStatement("                ScenarioContext.Current.Add(\"Driver\", this.driver);"));
+                    generationContext.ScenarioInitializeMethod.Statements.Add(new CodeSnippetStatement(string.Format("            this.sauceRest = new SauceRest(\"{0}\", \"{1}\", \"{2}\");", this.sauceLabSettings.Credentials.UserName, this.sauceLabSettings.Credentials.AccessKey, this.sauceLabSettings.Credentials.RestUrl)));
                     this.scenarioSetupMethodsAdded = true;
                 } 
             }
@@ -233,7 +237,12 @@
                 Name = "UpdateSauceLabsStatus"
             };
 
+            updateSauceLabsStatus.Parameters.Add(new CodeParameterDeclarationExpression("System.Boolean", "passed"));
+            updateSauceLabsStatus.Statements.Add(new CodeSnippetStatement("             var jobId = this.driver.GetSessionId();"));
+            updateSauceLabsStatus.Statements.Add(new CodeSnippetStatement("             if(passed) this.sauceRest.SetJobPassed(jobId);"));
+            updateSauceLabsStatus.Statements.Add(new CodeSnippetStatement("             else this.sauceRest.SetJobFailed(jobId);"));
 
+            generationContext.TestClass.Members.Add(updateSauceLabsStatus);
         }
 
         private static void CleanUpSeleniumContext(TestClassGenerationContext generationContext)
@@ -241,6 +250,13 @@
             generationContext.ScenarioCleanupMethod.Statements.Add(new CodeSnippetStatement("            try { System.Threading.Thread.Sleep(50); this.driver.Quit(); } catch (System.Exception) {}"));
             generationContext.ScenarioCleanupMethod.Statements.Add(new CodeSnippetStatement("            this.driver = null;"));
             generationContext.ScenarioCleanupMethod.Statements.Add(new CodeSnippetStatement("            ScenarioContext.Current.Remove(\"Driver\");"));
+        }
+
+        private static void UpdateSauceLabsStatus(TestClassGenerationContext generationContext)
+        {
+            generationContext.ScenarioCleanupMethod.Statements.Add(new CodeSnippetStatement("            bool passed = true;"));
+            generationContext.ScenarioCleanupMethod.Statements.Add(new CodeSnippetStatement("            if (ScenarioContext.Current.TestError != null) { passed = false; }"));
+            generationContext.ScenarioCleanupMethod.Statements.Add(new CodeSnippetStatement("            UpdateSauceLabsStatus(passed);"));
         }
 
         private SauceLabsSection GetSauceLabsConfiguration()

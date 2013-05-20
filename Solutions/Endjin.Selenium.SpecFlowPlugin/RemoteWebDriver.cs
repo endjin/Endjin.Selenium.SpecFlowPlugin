@@ -16,6 +16,11 @@
         {
         }
 
+        public string GetSessionId()
+        {
+            return this.SessionId.ToString();
+        }
+
         private static ICapabilities GetCapabilities(string browserName, string version, string platform, string testName = "", bool sauceLabs = false)
         {
             DesiredCapabilities capabilities;

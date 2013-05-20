@@ -2,11 +2,11 @@
 <minimalLanguageDiagram dslVersion="1.0.0.0" Id="2cd10c73-1a83-4def-bdd5-75aec6de0ed9" absoluteBounds="0, 0, 11, 8.5" name="SauceLabsSectionDesigner">
   <configurationSectionModelMoniker Id="8c0a7e95-4704-4b05-a971-c3c11c868694" />
   <nestedChildShapes>
-    <configurationElementShape Id="bc97d4a5-d225-47ef-9cae-34d54efaefbc" absoluteBounds="3.625, 2.875, 2.5, 1.5956835937499996" outlineDashStyle="Solid" outlineThickness="0.015625">
+    <configurationElementShape Id="bc97d4a5-d225-47ef-9cae-34d54efaefbc" absoluteBounds="3.625, 2.875, 2.5, 1.7879850260416665" outlineDashStyle="Solid" outlineThickness="0.015625">
       <configurationElementMoniker name="/8c0a7e95-4704-4b05-a971-c3c11c868694/CredentialsElement" />
       <nestedChildShapes>
-        <elementListCompartment Id="17b35feb-57ad-4ffb-b772-45ff34bb11d9" absoluteBounds="3.64, 3.285, 2.4699999999999998, 0.8262939453125" name="AttributeProperties" titleTextColor="Black" itemTextColor="Black" />
-        <elementListCompartment Id="b871bd6d-15e9-466c-a1cf-5a8527fe7989" isExpanded="false" absoluteBounds="3.64, 4.1212939453125, 2.4699999999999998, 0.2493896484375" name="ElementProperties" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="17b35feb-57ad-4ffb-b772-45ff34bb11d9" absoluteBounds="3.64, 3.285, 2.4699999999999998, 1.0185953776041665" name="AttributeProperties" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="b871bd6d-15e9-466c-a1cf-5a8527fe7989" isExpanded="false" absoluteBounds="3.64, 4.3135953776041669, 2.4699999999999998, 0.2493896484375" name="ElementProperties" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </configurationElementShape>
     <configurationSectionShape Id="d3678065-8a5e-48e8-ab84-78e3de9d7ec8" absoluteBounds="3.5, 0.625, 2.25, 1.4033821614583335" outlineDashStyle="Solid" outlineThickness="0.015625">

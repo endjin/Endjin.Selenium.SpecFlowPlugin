@@ -1,19 +1,26 @@
 ﻿namespace Endjin.Selenium.SpecFlowPlugin
 {
     using System.Collections.Generic;
+    using Newtonsoft.Json;
 
     public class SauceUpdate
     {
-        public string Name { get; set; }
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+        public string name { get; set; }
 
-        public string[] Tags { get; set; }
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+        public string[] tags { get; set; }
 
-        public string Public { get; set; }
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+        public string @public { get; set; }
 
-        public bool? Passed { get; set; }
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+        public bool? passed { get; set; }
 
-        public int? Build { get; set; }
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+        public int? build { get; set; }
 
-        public IDictionary<string, string> CustomData { get; set; }
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+        public IDictionary<string, string> customData { get; set; }
     }
 }

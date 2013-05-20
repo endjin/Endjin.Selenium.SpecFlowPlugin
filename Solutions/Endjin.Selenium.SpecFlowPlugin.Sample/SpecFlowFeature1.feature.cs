@@ -24,7 +24,9 @@ namespace Endjin.Selenium.SpecFlowPlugin.Sample
     public partial class SpecFlowFeature1Feature
     {
         
-        private OpenQA.Selenium.IWebDriver driver;
+        private Endjin.Selenium.SpecFlowPlugin.RemoteWebDriver driver;
+        
+        private Endjin.Selenium.SpecFlowPlugin.SauceRest sauceRest;
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
         
@@ -64,10 +66,14 @@ namespace Endjin.Selenium.SpecFlowPlugin.Sample
             testRunner.OnScenarioStart(scenarioInfo);
             if(this.driver != null)
                 ScenarioContext.Current.Add("Driver", this.driver);
+            this.sauceRest = new SauceRest("user_name", "access_key", "https://saucelabs.com/rest/v1");
         }
         
         public virtual void ScenarioCleanup()
         {
+            bool passed = true;
+            if (ScenarioContext.Current.TestError != null) { passed = false; }
+            UpdateSauceLabsStatus(passed);
             try { System.Threading.Thread.Sleep(50); this.driver.Quit(); } catch (System.Exception) {}
             this.driver = null;
             ScenarioContext.Current.Remove("Driver");
@@ -82,6 +88,13 @@ namespace Endjin.Selenium.SpecFlowPlugin.Sample
         private void InitializeSeleniumSauce(string browser, string version, string platform, string testName, string url)
         {
             this.driver = new Endjin.Selenium.SpecFlowPlugin.RemoteWebDriver(url, browser, version, platform, testName, true);
+        }
+        
+        private void UpdateSauceLabsStatus(bool passed)
+        {
+             var jobId = this.driver.GetSessionId();
+             if(passed) this.sauceRest.SetJobPassed(jobId);
+             else this.sauceRest.SetJobFailed(jobId);
         }
         
         [NUnit.Framework.TestAttribute()]

@@ -7,7 +7,7 @@
 
     public class SauceRest
     {
-        private HttpClient httpClient;
+        private readonly HttpClient httpClient;
 
         private readonly string username;
         private readonly string accessKey;
@@ -20,18 +20,21 @@
             this.sauceRestUrl = sauceRestUrl;
 
             this.httpClient = new HttpClient();
+
+            var auth = EncodeTo64(username + ":" + accessKey);
+            this.httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", auth);
         }
 
         public void SetJobPassed(string jobId)
         {
-            var update = new SauceUpdate { Passed = true };
+            var update = new SauceUpdate { passed = true };
 
             this.UpdateJobInfo(jobId, update);
         }
 
         public void SetJobFailed(string jobId)
         {
-            var update = new SauceUpdate { Passed = false };
+            var update = new SauceUpdate { passed = false };
 
             this.UpdateJobInfo(jobId, update);
         }
@@ -48,7 +51,7 @@
 
         private static string EncodeTo64(string toEncode)
         {
-            byte[] toEncodeAsBytes = Encoding.Unicode.GetBytes(toEncode);
+            byte[] toEncodeAsBytes = Encoding.Default.GetBytes(toEncode);
 
             string encodedTo64 = Convert.ToBase64String(toEncodeAsBytes);
 
