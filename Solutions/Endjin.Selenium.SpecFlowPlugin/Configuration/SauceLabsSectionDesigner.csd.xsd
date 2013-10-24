@@ -25,6 +25,11 @@
 				<xs:documentation>The Url.</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
+		<xs:attribute name="restUrl" use="optional" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>The RestUrl.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
 	</xs:complexType>
 	<xs:complexType name="Endjin.Selenium.SpecFlowPlugin.Configuration.SauceLabsSectionCT">
 		<xs:choice minOccurs="0" maxOccurs="unbounded">

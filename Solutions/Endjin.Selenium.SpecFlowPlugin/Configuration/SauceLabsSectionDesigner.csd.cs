@@ -106,6 +106,32 @@ namespace Endjin.Selenium.SpecFlowPlugin.Configuration
             }
         }
         #endregion
+        
+        #region RestUrl Property
+        /// <summary>
+        /// The XML name of the <see cref="RestUrl"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        internal const string RestUrlPropertyName = "restUrl";
+        
+        /// <summary>
+        /// Gets or sets the RestUrl.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The RestUrl.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::Endjin.Selenium.SpecFlowPlugin.Configuration.CredentialsElement.RestUrlPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
+        public virtual string RestUrl
+        {
+            get
+            {
+                return ((string)(base[global::Endjin.Selenium.SpecFlowPlugin.Configuration.CredentialsElement.RestUrlPropertyName]));
+            }
+            set
+            {
+                base[global::Endjin.Selenium.SpecFlowPlugin.Configuration.CredentialsElement.RestUrlPropertyName] = value;
+            }
+        }
+        #endregion
     }
 }
 namespace Endjin.Selenium.SpecFlowPlugin.Configuration

@@ -28,6 +28,11 @@
             <externalTypeMoniker name="/8c0a7e95-4704-4b05-a971-c3c11c868694/String" />
           </type>
         </attributeProperty>
+        <attributeProperty name="RestUrl" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="restUrl" isReadOnly="false">
+          <type>
+            <externalTypeMoniker name="/8c0a7e95-4704-4b05-a971-c3c11c868694/String" />
+          </type>
+        </attributeProperty>
       </attributeProperties>
     </configurationElement>
     <configurationSection name="SauceLabsSection" namespace="Endjin.Selenium.SpecFlowPlugin.Configuration" codeGenOptions="Singleton, XmlnsProperty" xmlSectionName="sauceLabsSection">
