@@ -36,7 +36,6 @@
     <None Include="Definitions\DevBuild\desktop-build.cmd" />
     <None Include="Definitions\DevBuild\package-build.cmd" />
     <None Include="Definitions\DevBuild\server-build.cmd" />
-    <None Include="Targets\CodeAnalysis\StyleCop.Targets" />
     <None Include="Targets\Common\Common.properties" />
     <None Include="Targets\Common\Global.imports" />
     <None Include="Targets\Build.properties" />
